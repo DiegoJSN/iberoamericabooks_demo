@@ -1,0 +1,10 @@
+{
+  "about": "Offline demonstration fixture. Citation values are synthetic and are not presented as OpenAlex facts.",
+  "generated_with_seed": 2026,
+  "records": [
+    {"isbn13": "9780307474728", "match_status": "offline_demo", "cited_by_count_demo": 148},
+    {"isbn13": "9780307950925", "match_status": "offline_demo", "cited_by_count_demo": 121},
+    {"isbn13": "9788437604572", "match_status": "offline_demo", "cited_by_count_demo": 96}
+  ]
+}
+
