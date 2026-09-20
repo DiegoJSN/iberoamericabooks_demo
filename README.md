@@ -51,7 +51,7 @@ The browser opens automatically when the application is ready. Its local address
 
 ## Technical notebook
 
-The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) provides a code-first walkthrough. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
+The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) provides a detailed code-first walkthrough. It shows the complete SQLite DDL, diagnoses every source dataframe, documents the fields that need cleaning, resolves validation and deduplication decisions step by step, and audits the final database. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
 
 When executed, the notebook queries the OpenAlex `/works` API for every catalogue record and stores the selected candidate, DOI, citation count, source and matching scores in SQLite. Basic use does not require a key. An optional key can be supplied only through the `OPENALEX_API_KEY` environment variable; no secret is stored in the repository. If the service is unavailable, the affected rows use an explicitly labelled fixture fallback so the ETL can still finish.
 
@@ -70,6 +70,7 @@ src/iberoamerica_books/       Cleaning, ETL and SQLite logic
 demo_data/                    Redistributable semisynthetic sources
 notebooks/                    Reproducible technical walkthrough
 scripts/create_demo_data.py   Fixed-seed data generator
+scripts/build_notebook.py     Reproducible detailed notebook builder
 tests/                        Critical pipeline checks
 ```
 

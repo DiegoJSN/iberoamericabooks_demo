@@ -120,6 +120,7 @@ SELECT
     b.country,
     e.pages,
     e.source_count,
+    e.source_names,
     COALESCE(sr.units_sold, 0) AS units_sold,
     COALESCE(sr.revenue_eur, 0) AS revenue_eur,
     COALESCE(am.mentions, 0) AS mentions,
