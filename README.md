@@ -20,7 +20,7 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 
 Open the public demo—no installation or account required:
 
-**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
+**[Launch IberoamericaBooks on Streamlit](https://iberoamericabooks-etl.streamlit.app/)**
 
 To inspect the complete technical workflow—ingestion, normalization, validation, deduplication, enrichment and SQLite persistence—open the rendered notebook:
 
