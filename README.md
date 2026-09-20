@@ -20,7 +20,7 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 
 Open the public demo—no installation or account required:
 
-**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
+**[Launch IberoamericaBooks on Streamlit](https://iberoamericabooks-etl.streamlit.app/)**
 
 This is a sanitized public repository. It contains only redistributable semisynthetic demo data; the private operational sources and their history are not included.
 
