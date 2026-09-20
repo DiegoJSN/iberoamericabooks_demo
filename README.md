@@ -29,7 +29,7 @@ To inspect the complete technical workflow—ingestion, normalization, validatio
 
 To inspect the project as it was developed, including the original sequence of diagnoses, cleaning decisions and exploratory code, open the near-verbatim historical copy:
 
-**[View the sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true)**
+**[View the sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true)**
 
 This historical reference preserves the original notebook structure and code. Only saved outputs, execution metadata, private row examples, internal identifiers and private report names were removed or replaced. Because the private source workbooks are not distributed, it is intended for inspection rather than execution.
 
@@ -61,7 +61,7 @@ The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoameric
 
 When executed, the notebook queries the OpenAlex `/works` API for every catalogue record and stores the selected candidate, DOI, citation count, source and matching scores in SQLite. Basic use does not require a key. An optional key can be supplied only through the `OPENALEX_API_KEY` environment variable; no secret is stored in the repository. If the service is unavailable, the affected rows use an explicitly labelled fixture fallback so the ETL can still finish.
 
-The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) is also available as a historical, read-only reference. Unlike the reproducible demo notebook above, it retains the original long-form development workflow and therefore depends on private input files that are not part of this repository.
+The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) is also available as a historical, read-only reference. Unlike the reproducible demo notebook above, it retains the original long-form development workflow and therefore depends on private input files that are not part of this repository.
 
 ## Technology
 
