@@ -127,5 +127,4 @@ with open(result.database_path, "rb") as database_file:
         file_name="iberoamerica_books_demo.sqlite",
         mime="application/vnd.sqlite3",
     )
-st.caption("El proyecto original procesaba archivos privados de catálogo y ventas. Esta rama conserva el diseño técnico con un conjunto semisintético redistribuible.")
-
+st.caption("El proyecto original procesaba archivos privados de catálogo y ventas. Este repositorio público conserva el diseño técnico con un conjunto semisintético redistribuible.")

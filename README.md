@@ -1,6 +1,6 @@
 # IberoamericaBooks
 
-> **Portfolio / Demo Version** — branch `demo`
+> **Portfolio / Demo Version** — public repository on `main`
 
 IberoamericaBooks is a Python ETL project that consolidates heterogeneous publishing catalogues, sales records and digital-attention metrics into a normalized SQLite database. It was created for a real data-integration workflow in the Ibero-American book sector.
 
@@ -18,24 +18,26 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 
 ## Recommended: online demo
 
-Deploy `app.py` on [Streamlit Community Cloud](https://streamlit.io/cloud) and add the public URL here. The repository may remain private while the app is public.
+Open the public demo—no installation or account required:
 
-> This repository contains private data in older Git history. Do not make the existing repository public. For a public code repository, publish a clean snapshot without the old history.
+**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
+
+This is a sanitized public repository. It contains only redistributable semisynthetic demo data; the private operational sources and their history are not included.
 
 ## Run locally
 
 ### Windows
 
 1. Install [Python 3](https://www.python.org/downloads/) and enable **Add Python to PATH** during installation.
-2. Download this branch as a ZIP and extract it.
+2. Download this repository as a ZIP and extract it.
 3. Double-click `run_demo.bat`.
 4. Wait while the required packages are installed. The browser opens automatically when the application is ready.
 
 ### macOS or Linux
 
 ```bash
-git clone --branch demo --single-branch https://github.com/DiegoJSN/IberoamericaBooks.git
-cd IberoamericaBooks
+git clone https://github.com/DiegoJSN/iberoamericabooks_demo.git
+cd iberoamericabooks_demo
 chmod +x run_demo.sh
 ./run_demo.sh
 ```

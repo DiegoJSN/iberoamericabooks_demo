@@ -2,9 +2,9 @@ name: Demo checks
 
 on:
   push:
-    branches: [demo]
+    branches: [main]
   pull_request:
-    branches: [demo]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
