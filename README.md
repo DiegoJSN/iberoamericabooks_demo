@@ -20,7 +20,11 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 
 Open the public demo—no installation or account required:
 
-**[Launch IberoamericaBooks on Streamlit](https://iberoamericabooks-etl.streamlit.app/)**
+**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
+
+To inspect the complete technical workflow—ingestion, normalization, validation, deduplication, enrichment and SQLite persistence—open the rendered notebook:
+
+**[View the ETL workflow in Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb)**
 
 This is a sanitized public repository. It contains only redistributable semisynthetic demo data; the private operational sources and their history are not included.
 
@@ -46,7 +50,7 @@ The browser opens automatically when the application is ready. Its local address
 
 ## Technical notebook
 
-For a code-first walkthrough, open `notebooks/iberoamerica_books_demo.ipynb` after installing the requirements. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
+The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) provides a code-first walkthrough. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
 
 ## Technology
 

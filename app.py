@@ -31,6 +31,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.link_button(
+    "Ver el workflow técnico en Jupyter Notebook",
+    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb",
+    icon="📓",
+)
+
 st.markdown(
     """
     <div class="hero">
