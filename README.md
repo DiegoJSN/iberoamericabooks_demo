@@ -21,11 +21,11 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 
 Open the public demo—no installation or account required:
 
-**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
+**[Launch IberoamericaBooks on Streamlit](https://iberoamericabooks-etl.streamlit.app/)**
 
 To inspect the complete technical workflow—ingestion, normalization, validation, deduplication, enrichment and SQLite persistence—open the rendered notebook:
 
-**[View the ETL workflow in Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb)**
+**[View the ETL workflow in Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true)**
 
 This is a sanitized public repository. It contains only redistributable semisynthetic demo data; the private operational sources and their history are not included.
 
@@ -51,7 +51,7 @@ The browser opens automatically when the application is ready. Its local address
 
 ## Technical notebook
 
-The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) provides a detailed code-first walkthrough. It shows the complete SQLite DDL, diagnoses every source dataframe, documents the fields that need cleaning, resolves validation and deduplication decisions step by step, and audits the final database. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
+The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) provides a detailed code-first walkthrough. It shows the complete SQLite DDL, diagnoses every source dataframe, documents the fields that need cleaning, resolves validation and deduplication decisions step by step, and audits the final database. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
 
 When executed, the notebook queries the OpenAlex `/works` API for every catalogue record and stores the selected candidate, DOI, citation count, source and matching scores in SQLite. Basic use does not require a key. An optional key can be supplied only through the `OPENALEX_API_KEY` environment variable; no secret is stored in the repository. If the service is unavailable, the affected rows use an explicitly labelled fixture fallback so the ETL can still finish.
 
