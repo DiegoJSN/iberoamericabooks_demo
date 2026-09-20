@@ -60,8 +60,18 @@ class NotebookDocumentationTests(unittest.TestCase):
         app_source = (ROOT / "app.py").read_text(encoding="utf-8")
         self.assertIn("nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/", app_source)
         self.assertNotIn("blob/main/notebooks/iberoamerica_books_demo.ipynb", app_source)
+        self.assertIn("Ver el notebook original saneado", app_source)
+        self.assertIn(
+            "notebooks/archive/iberoamerica_books_original_sanitized.ipynb",
+            app_source,
+        )
+        self.assertNotIn(
+            "blob/main/notebooks/archive/iberoamerica_books_original_sanitized.ipynb",
+            app_source,
+        )
         self.assertIn("flush_cache=true", app_source)
 
 
 if __name__ == "__main__":
     unittest.main()
+
