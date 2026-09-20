@@ -10,6 +10,7 @@ import pandas as pd
 
 from .cleaning import clean_isbn, is_valid_isbn13, normalize_text, split_authors
 from .database import connect, initialise
+from .openalex import enrich_catalogue_openalex
 
 
 SOURCE_SPECS = {
@@ -36,6 +37,7 @@ class PipelineResult:
     catalogue: pd.DataFrame
     sales: pd.DataFrame
     altmetrics: pd.DataFrame
+    openalex: pd.DataFrame
     source_records: pd.DataFrame
     events: pd.DataFrame
     metrics: dict[str, int | float]
@@ -78,7 +80,14 @@ def _get_or_create(connection: sqlite3.Connection, table: str, id_column: str, n
     return int(row[0])
 
 
-def _load_database(connection: sqlite3.Connection, catalogue: pd.DataFrame, sales: pd.DataFrame, altmetrics: pd.DataFrame, records: pd.DataFrame) -> None:
+def _load_database(
+    connection: sqlite3.Connection,
+    catalogue: pd.DataFrame,
+    sales: pd.DataFrame,
+    altmetrics: pd.DataFrame,
+    openalex: pd.DataFrame,
+    records: pd.DataFrame,
+) -> None:
     for item in catalogue.to_dict("records"):
         publisher_id = _get_or_create(connection, "publishers", "publisher_id", str(item["publisher"]))
         connection.execute(
@@ -99,6 +108,17 @@ def _load_database(connection: sqlite3.Connection, catalogue: pd.DataFrame, sale
     altmetric_rows = altmetrics[["isbn13", "mentions", "readers", "demo_score", "synthetic"]].itertuples(index=False, name=None)
     connection.executemany("INSERT INTO altmetrics VALUES (?, ?, ?, ?, ?)", altmetric_rows)
 
+    openalex_columns = [
+        "isbn13", "query_title", "match_status", "data_source", "openalex_id",
+        "matched_title", "doi", "cited_by_count", "title_score", "author_score",
+        "match_score", "error",
+    ]
+    prepared_openalex = openalex.reindex(columns=openalex_columns).where(pd.notna(openalex), None)
+    connection.executemany(
+        "INSERT INTO openalex_enrichment VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        prepared_openalex.itertuples(index=False, name=None),
+    )
+
     source_rows = [
         (
             row.source_name,
@@ -117,7 +137,14 @@ def _load_database(connection: sqlite3.Connection, catalogue: pd.DataFrame, sale
     )
 
 
-def run_pipeline(data_dir: str | Path, database_path: str | Path) -> PipelineResult:
+def run_pipeline(
+    data_dir: str | Path,
+    database_path: str | Path,
+    *,
+    openalex_mode: str = "offline",
+    openalex_api_key: str | None = None,
+    openalex_timeout: float = 15.0,
+) -> PipelineResult:
     data_dir = Path(data_dir)
     database_path = Path(database_path)
     database_path.parent.mkdir(parents=True, exist_ok=True)
@@ -134,6 +161,13 @@ def run_pipeline(data_dir: str | Path, database_path: str | Path) -> PipelineRes
     altmetrics = pd.read_csv(data_dir / "altmetrics.csv", dtype={"isbn13": str})
     altmetrics["isbn13"] = altmetrics["isbn13"].map(clean_isbn)
     altmetrics = altmetrics[altmetrics["isbn13"].isin(catalogue["isbn13"])].copy()
+    openalex = enrich_catalogue_openalex(
+        catalogue,
+        mode=openalex_mode,
+        fixture_path=data_dir.parent / "fixtures" / "openalex_cache.json",
+        api_key=openalex_api_key,
+        timeout=openalex_timeout,
+    )
 
     duplicate_rows = int(records.loc[records["valid_isbn"]].duplicated("isbn13", keep=False).sum())
     invalid_rows = int((~records["valid_isbn"]).sum())
@@ -143,7 +177,12 @@ def run_pipeline(data_dir: str | Path, database_path: str | Path) -> PipelineRes
             ("2. Normalización", len(records), len(records), "ISBN, títulos y procedencia normalizados sin sobrescribir los datos brutos."),
             ("3. Validación", len(records), int(records["valid_isbn"].sum()), f"{invalid_rows} filas rechazadas por ISBN-13 no válido."),
             ("4. Deduplicación", int(records["valid_isbn"].sum()), len(catalogue), f"{duplicate_rows} filas pertenecen a ISBN presentes en más de una fuente."),
-            ("5. Enriquecimiento", len(catalogue), len(catalogue), "Ventas y atención digital sintéticas unidas por ISBN."),
+            (
+                "5. Enriquecimiento",
+                len(catalogue),
+                len(catalogue),
+                f"Ventas y atención digital unidas por ISBN; OpenAlex ejecutado en modo {openalex_mode}.",
+            ),
             ("6. Persistencia", len(catalogue), len(catalogue), "Modelo relacional escrito en SQLite con claves foráneas."),
         ],
         columns=["step_name", "input_rows", "output_rows", "details"],
@@ -151,7 +190,7 @@ def run_pipeline(data_dir: str | Path, database_path: str | Path) -> PipelineRes
 
     with connect(database_path) as connection:
         initialise(connection)
-        _load_database(connection, catalogue, sales, altmetrics, records)
+        _load_database(connection, catalogue, sales, altmetrics, openalex, records)
         connection.executemany("INSERT INTO pipeline_events(step_name, input_rows, output_rows, details) VALUES (?, ?, ?, ?)", events.itertuples(index=False, name=None))
         connection.commit()
 
@@ -163,6 +202,7 @@ def run_pipeline(data_dir: str | Path, database_path: str | Path) -> PipelineRes
         "sales_rows": int(len(sales)),
         "units_sold": int(sales["units"].sum()),
         "revenue_eur": float(round(sales["revenue_eur"].sum(), 2)),
+        "openalex_live_rows": int((openalex["data_source"] == "openalex_live").sum()),
+        "openalex_matched_rows": int((openalex["match_status"] == "matched").sum()),
     }
-    return PipelineResult(database_path, catalogue, sales, altmetrics, records, events, metrics)
-
+    return PipelineResult(database_path, catalogue, sales, altmetrics, openalex, records, events, metrics)

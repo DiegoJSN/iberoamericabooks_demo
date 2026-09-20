@@ -65,6 +65,21 @@ CREATE TABLE altmetrics (
     synthetic INTEGER NOT NULL DEFAULT 1
 );
 
+CREATE TABLE openalex_enrichment (
+    isbn13 TEXT PRIMARY KEY REFERENCES editions(isbn13),
+    query_title TEXT NOT NULL,
+    match_status TEXT NOT NULL,
+    data_source TEXT NOT NULL,
+    openalex_id TEXT,
+    matched_title TEXT,
+    doi TEXT,
+    cited_by_count INTEGER,
+    title_score REAL,
+    author_score REAL,
+    match_score REAL,
+    error TEXT
+);
+
 CREATE TABLE source_records (
     source_record_id INTEGER PRIMARY KEY,
     source_name TEXT NOT NULL,
@@ -109,13 +124,19 @@ SELECT
     COALESCE(sr.revenue_eur, 0) AS revenue_eur,
     COALESCE(am.mentions, 0) AS mentions,
     COALESCE(am.readers, 0) AS readers,
-    COALESCE(am.demo_score, 0) AS demo_score
+    COALESCE(am.demo_score, 0) AS demo_score,
+    oa.openalex_id,
+    oa.doi AS openalex_doi,
+    oa.cited_by_count AS openalex_citations,
+    oa.match_status AS openalex_match_status,
+    oa.data_source AS openalex_data_source
 FROM editions e
 JOIN books b ON b.book_id = e.book_id
 LEFT JOIN author_rollup ar ON ar.book_id = b.book_id
 LEFT JOIN publishers p ON p.publisher_id = e.publisher_id
 LEFT JOIN sales_rollup sr ON sr.isbn13 = e.isbn13
 LEFT JOIN altmetrics am ON am.isbn13 = e.isbn13
+LEFT JOIN openalex_enrichment oa ON oa.isbn13 = e.isbn13
 ;
 """
 

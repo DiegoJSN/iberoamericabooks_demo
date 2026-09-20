@@ -14,13 +14,14 @@ The code and data workflow were authored by Diego J. Soler Navarro. AI was used 
 - See how three differently structured Excel sources are normalized and deduplicated.
 - Trace every accepted or rejected source row.
 - Explore synthetic sales and attention metrics.
+- Run live OpenAlex enrichment from the technical notebook, with an explicit offline fallback.
 - Run safe read-only SQL queries and download the generated SQLite database.
 
 ## Recommended: online demo
 
 Open the public demo—no installation or account required:
 
-**[Launch IberoamericaBooks on Streamlit](https://iberoamericabooks-etl.streamlit.app/)**
+**[Launch IberoamericaBooks on Streamlit](https://iberoamerica-books-etl.streamlit.app/)**
 
 To inspect the complete technical workflow—ingestion, normalization, validation, deduplication, enrichment and SQLite persistence—open the rendered notebook:
 
@@ -52,9 +53,12 @@ The browser opens automatically when the application is ready. Its local address
 
 The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) provides a code-first walkthrough. It calls the same reusable ETL package as the web app, so the two paths cannot silently diverge.
 
+When executed, the notebook queries the OpenAlex `/works` API for every catalogue record and stores the selected candidate, DOI, citation count, source and matching scores in SQLite. Basic use does not require a key. An optional key can be supplied only through the `OPENALEX_API_KEY` environment variable; no secret is stored in the repository. If the service is unavailable, the affected rows use an explicitly labelled fixture fallback so the ETL can still finish.
+
 ## Technology
 
 - Python and pandas for ingestion, cleaning and transformation
+- OpenAlex REST API for live bibliographic enrichment in the notebook
 - SQLite for the normalized relational model
 - Streamlit for the interactive portfolio demo
 - Excel and CSV as heterogeneous source formats
@@ -73,7 +77,8 @@ tests/                        Critical pipeline checks
 
 - Bibliographic examples link to Open Library records for provenance.
 - Sales, revenue, attention metrics and invalid control rows are synthetic.
-- External enrichment used by the original notebook is represented offline so the demo remains reliable and does not need credentials.
+- The notebook uses live OpenAlex results, which can change over time; its fallback and the Streamlit demo's default mode remain offline for reliability.
+- WorldCat and Altmetric are documented as parts of the original workflow but are not called with private credentials in this public demo.
 - This reduced dataset demonstrates the workflow, not the scale or business conclusions of the private project.
 
 ## Verify
