@@ -36,6 +36,11 @@ st.link_button(
     "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
     icon="📓",
 )
+st.link_button(
+    "Ver el notebook original saneado",
+    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
+    icon="🗂️",
+)
 
 st.markdown(
     """
@@ -134,3 +139,4 @@ with open(result.database_path, "rb") as database_file:
         mime="application/vnd.sqlite3",
     )
 st.caption("El proyecto original procesaba archivos privados de catálogo y ventas. Este repositorio público conserva el diseño técnico con un conjunto semisintético redistribuible.")
+
