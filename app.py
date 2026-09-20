@@ -38,7 +38,7 @@ st.link_button(
 )
 st.link_button(
     "Ver el notebook original saneado",
-    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
+    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
     icon="🗂️",
 )
 
