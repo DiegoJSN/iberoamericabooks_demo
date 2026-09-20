@@ -27,6 +27,12 @@ To inspect the complete technical workflow—ingestion, normalization, validatio
 
 **[View the ETL workflow in Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true)**
 
+To inspect the project as it was developed, including the original sequence of diagnoses, cleaning decisions and exploratory code, open the near-verbatim historical copy:
+
+**[View the sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true)**
+
+This historical reference preserves the original notebook structure and code. Only saved outputs, execution metadata, private row examples, internal identifiers and private report names were removed or replaced. Because the private source workbooks are not distributed, it is intended for inspection rather than execution.
+
 This is a sanitized public repository. It contains only redistributable semisynthetic demo data; the private operational sources and their history are not included.
 
 ## Run locally
@@ -55,6 +61,8 @@ The [rendered Jupyter Notebook](https://nbviewer.org/github/DiegoJSN/iberoameric
 
 When executed, the notebook queries the OpenAlex `/works` API for every catalogue record and stores the selected candidate, DOI, citation count, source and matching scores in SQLite. Basic use does not require a key. An optional key can be supplied only through the `OPENALEX_API_KEY` environment variable; no secret is stored in the repository. If the service is unavailable, the affected rows use an explicitly labelled fixture fallback so the ETL can still finish.
 
+The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/27ea9dae62a4822f5bbb0c15dd60829559edac17/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) is also available as a historical, read-only reference. Unlike the reproducible demo notebook above, it retains the original long-form development workflow and therefore depends on private input files that are not part of this repository.
+
 ## Technology
 
 - Python and pandas for ingestion, cleaning and transformation
@@ -68,7 +76,7 @@ When executed, the notebook queries the OpenAlex `/works` API for every catalogu
 app.py                         Streamlit interface
 src/iberoamerica_books/       Cleaning, ETL and SQLite logic
 demo_data/                    Redistributable semisynthetic sources
-notebooks/                    Reproducible technical walkthrough
+notebooks/                    Reproducible walkthrough and sanitized historical notebook
 scripts/create_demo_data.py   Fixed-seed data generator
 scripts/build_notebook.py     Reproducible detailed notebook builder
 tests/                        Critical pipeline checks
@@ -87,3 +95,4 @@ tests/                        Critical pipeline checks
 ```bash
 python -m unittest discover -s tests -v
 ```
+
