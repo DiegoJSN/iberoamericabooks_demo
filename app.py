@@ -33,7 +33,7 @@ st.markdown(
 
 st.link_button(
     "Ver el workflow técnico en Jupyter Notebook",
-    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb",
+    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
     icon="📓",
 )
 

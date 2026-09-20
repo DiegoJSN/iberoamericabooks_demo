@@ -56,6 +56,12 @@ class NotebookDocumentationTests(unittest.TestCase):
         self.assertIn('OPENALEX_MODE = "live"', self.text)
         self.assertIn("openalex_mode=OPENALEX_MODE", self.text)
 
+    def test_streamlit_links_to_an_immutable_notebook_snapshot(self):
+        app_source = (ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn("nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/", app_source)
+        self.assertNotIn("blob/main/notebooks/iberoamerica_books_demo.ipynb", app_source)
+        self.assertIn("flush_cache=true", app_source)
+
 
 if __name__ == "__main__":
     unittest.main()
