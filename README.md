@@ -13,7 +13,7 @@ I developed the code and data workflow manually, using my own Python and data-pr
 | Resource | Best for | Link |
 |---|---|---|
 | **Interactive Streamlit demo (recommended)** | Quickly explore the pipeline outputs, consolidated catalogue, provenance, synthetic sales and SQLite queries | [Launch demo](https://iberoamericabooks-etl.streamlit.app/) |
-| **Technical ETL notebook** | Inspect the reproducible Python workflow step by step | [View notebook]([https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) |
+| **Technical ETL notebook** | Inspect the reproducible Python workflow step by step | [View notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) |
 | **Original development notebook** | Review the original long-form development process, diagnoses, cleaning decisions and exploratory code | [View sanitized original](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) |
 
 > The **Streamlit application is a portfolio interface for exploring the outputs of the ETL pipeline**. The core of the project is the Python data-processing and relational database workflow, which can be inspected in detail in the technical and original development notebooks.
