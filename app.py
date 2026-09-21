@@ -24,6 +24,9 @@ st.markdown(
       .hero {padding:1.2rem 1.35rem; border:1px solid #E2D3CA; border-radius:18px; background:linear-gradient(135deg,#FFFDFC,#F4E9E2); margin-bottom:1.2rem;}
       .hero h1 {margin:.15rem 0 .35rem 0; color:#321D25;}
       .muted {color:#6C5A60;}
+      .notebook-card {min-height:132px; padding:.2rem .15rem;}
+      .notebook-card h3 {margin:.1rem 0 .45rem 0; color:#321D25; font-size:1.15rem;}
+      .notebook-card p {margin:0; color:#6C5A60;}
       .step {border-left:4px solid #8B2F4B; padding:.7rem .9rem; background:#FFF; border-radius:0 10px 10px 0; min-height:110px;}
       div[data-testid="stMetric"] {background:#FFF; border:1px solid #E6DDD8; border-radius:12px; padding:.65rem .85rem;}
     </style>
@@ -31,16 +34,47 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.link_button(
-    "Ver el workflow técnico en Jupyter Notebook",
-    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
-    icon="📓",
+st.info(
+    "La **aplicación de Streamlit es una interfaz de portfolio para explorar "
+    "los resultados del pipeline ETL**. El núcleo del proyecto es el flujo de "
+    "procesamiento de datos en Python y la base de datos relacional, que puede "
+    "examinarse en detalle en los notebooks técnico y original de desarrollo."
 )
-st.link_button(
-    "Ver el notebook original saneado",
-    "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
-    icon="🗂️",
-)
+
+technical_notebook, original_notebook = st.columns(2)
+with technical_notebook:
+    st.markdown(
+        """
+        <div class="notebook-card">
+          <h3>Notebook técnico del ETL</h3>
+          <p><strong>Versión funcional y ejecutable.</strong> Reproduce el pipeline con datos públicos de demostración y permite consultar OpenAlex realmente.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.link_button(
+        "Abrir el notebook técnico del ETL",
+        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
+        icon="📓",
+        use_container_width=True,
+    )
+
+with original_notebook:
+    st.markdown(
+        """
+        <div class="notebook-card">
+          <h3>Notebook original de desarrollo</h3>
+          <p>Está pensado principalmente para <strong>examinar el código y el proceso de desarrollo</strong>, no para ejecutarlo directamente, porque los archivos privados originales no se distribuyen.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.link_button(
+        "Abrir el notebook original de desarrollo",
+        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
+        icon="🗂️",
+        use_container_width=True,
+    )
 
 st.markdown(
     """
