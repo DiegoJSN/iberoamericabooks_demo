@@ -47,7 +47,7 @@ with technical_notebook:
         """
         <div class="notebook-card">
           <h3>Notebook técnico del ETL</h3>
-          <p><strong>Versión funcional y ejecutable.</strong> Reproduce el pipeline con datos públicos de demostración y permite consultar OpenAlex realmente.</p>
+          <p><strong>Versión funcional y ejecutable.</strong> Reproduce el pipeline con datos públicos de demostración y permite realizar consultas reales a OpenAlex.</p>
         </div>
         """,
         unsafe_allow_html=True,
