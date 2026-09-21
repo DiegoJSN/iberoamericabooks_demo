@@ -13,8 +13,8 @@ I developed the code and data workflow manually, using my own Python and data-pr
 | Resource | Best for | Link |
 |---|---|---|
 | **Interactive Streamlit demo (recommended)** | Quickly explore the pipeline outputs, consolidated catalogue, provenance, synthetic sales and SQLite queries | [Launch demo](https://iberoamericabooks-etl.streamlit.app/) |
-| **Technical ETL notebook** | Inspect the reproducible Python workflow step by step | [View notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) |
-| **Original development notebook** | Review the original long-form development process, diagnoses, cleaning decisions and exploratory code | [View sanitized original](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) |
+| **Technical ETL notebook** | Inspect the reproducible Python workflow step by step | [View notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) |
+| **Original development notebook** | Review the original long-form development process, diagnoses, cleaning decisions and exploratory code | [View sanitized original](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) |
 
 > The **Streamlit application is a portfolio interface for exploring the outputs of the ETL pipeline**. The core of the project is the Python data-processing and relational database workflow, which can be inspected in detail in the technical and original development notebooks.
 
@@ -83,7 +83,7 @@ run_demo.sh                   macOS/Linux launcher
 
 ## Technical notebook
 
-The [technical ETL notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) is the recommended resource for inspecting the code-first workflow.
+The [technical ETL notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true) is the recommended resource for inspecting the code-first workflow.
 
 It shows the complete SQLite DDL, diagnoses each source dataframe, documents the fields that require cleaning, resolves validation and deduplication decisions step by step, and audits the final database.
 
@@ -97,7 +97,7 @@ If OpenAlex is unavailable, affected rows use an explicitly labelled fixture fal
 
 ## Original development notebook
 
-The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) preserves the original long-form development workflow.
+The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) preserves the original long-form development workflow.
 
 Unlike the reproducible demo notebook, it retains the sequence of exploratory analyses, diagnoses, data-cleaning decisions and development code used while building the original project.
 
