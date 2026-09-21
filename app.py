@@ -54,7 +54,7 @@ with technical_notebook:
     )
     st.link_button(
         "Abrir el notebook técnico del ETL",
-        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/820e4232260668a7cbff0fc1d3d52ceebe9d0691/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
+        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/iberoamerica_books_demo.ipynb?flush_cache=true",
         icon="📓",
         use_container_width=True,
     )
@@ -71,7 +71,7 @@ with original_notebook:
     )
     st.link_button(
         "Abrir el notebook original de desarrollo",
-        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
+        "https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/19cf1d83466806b805208d94ac9920a1a29e5c2e/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true",
         icon="🗂️",
         use_container_width=True,
     )
