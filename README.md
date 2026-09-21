@@ -97,7 +97,7 @@ If OpenAlex is unavailable, affected rows use an explicitly labelled fixture fal
 
 ## Original development notebook
 
-The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/archive/iberoamerica_books_original_sanitized.ipynb) preserves the original long-form development workflow.
+The [sanitized original development notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/9b9bbd6c73ba8041267d1d10f567ba1f938b99be/notebooks/archive/iberoamerica_books_original_sanitized.ipynb?flush_cache=true) preserves the original long-form development workflow.
 
 Unlike the reproducible demo notebook, it retains the sequence of exploratory analyses, diagnoses, data-cleaning decisions and development code used while building the original project.
 
