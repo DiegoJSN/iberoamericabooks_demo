@@ -12,7 +12,7 @@ I developed the code and data workflow manually, using my own Python and data-pr
 
 | Resource | Best for | Link |
 |---|---|---|
-| **Interactive Streamlit demo (recommended)** | Quickly explore the pipeline outputs, consolidated catalogue, provenance, synthetic sales and SQLite queries | [Launch demo](https://iberoamerica-books-etl.streamlit.app/) |
+| **Interactive Streamlit demo (recommended)** | Quickly explore the pipeline outputs, consolidated catalogue, provenance, synthetic sales and SQLite queries | [Launch demo](https://iberoamericabooks-etl.streamlit.app/) |
 | **Technical ETL notebook** | Inspect the reproducible Python workflow step by step | [View notebook](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/iberoamerica_books_demo.ipynb) |
 | **Original development notebook** | Review the original long-form development process, diagnoses, cleaning decisions and exploratory code | [View sanitized original](https://nbviewer.org/github/DiegoJSN/iberoamericabooks_demo/blob/main/notebooks/archive/iberoamerica_books_original_sanitized.ipynb) |
 
